@@ -365,36 +365,162 @@
   <script>
 
     function checkRegistration() {
-
+    
       const id =
         document
           .getElementById("registrationId")
           .value
           .trim();
-
-
+    
       if (!id) {
-
+    
         showResult(
           "error",
           "Please enter a Registration ID."
         );
-
+    
         return;
       }
-
-
+    
       showResult(
         "warning",
         "Checking registration..."
       );
+    
+    
+      const API_URL =
+        "https://script.google.com/macros/s/AKfycbxrDMxUztt-6b79War4qdJR216FzyZN8PJ7s2NP_RG6nP1QsHAx9HSmoqK6wmZTdrJrow/exec";
+    
+    
+      const url =
+        API_URL +
+        "?action=validate&registrationId=" +
+        encodeURIComponent(id);
+    
+    
+      fetch(url)
+    
+        .then(function(response) {
+    
+          if (!response.ok) {
+    
+            throw new Error(
+              "Server returned " +
+              response.status
+            );
+    
+          }
+    
+          return response.json();
+    
+        })
+    
+        .then(function(data) {
+    
+          if (!data.success) {
+    
+            showResult(
+              "error",
+              "❌ " + data.message
+            );
+    
+            return;
+          }
+    
+    
+          if (data.alreadyCheckedIn) {
+    
+            showResult(
+              "warning",
+              "⚠️ <strong>ALREADY CHECKED IN</strong><br><br>" +
+              formatRegistration(data.registration)
+            );
+    
+            return;
+          }
+    
+    
+          if (data.valid) {
+    
+            showResult(
+              "success",
+              "✅ <strong>VALID REGISTRATION</strong><br><br>" +
+              formatRegistration(data.registration)
+            );
+    
+            return;
+          }
+    
+    
+          showResult(
+            "error",
+            "❌ Registration could not be validated."
+          );
+    
+        })
+    
+        .catch(function(error) {
+    
+          showResult(
+            "error",
+            "❌ Unable to connect to the registration system.<br><br>" +
+            error.message
+          );
+    
+        });
+    
+    }
 
+    function formatRegistration(registration) {
 
-      /*
-       * Backend connection will be added
-       * in the next step.
-       */
+      return (
+    
+        "<strong>Registration ID:</strong> " +
+        escapeHtml(registration.registrationId) +
+    
+        "<br><br>" +
+    
+        "<strong>Name:</strong> " +
+        escapeHtml(registration.name) +
+    
+        "<br>" +
+    
+        "<strong>Adults:</strong> " +
+        escapeHtml(registration.adults) +
+    
+        "<br>" +
+    
+        "<strong>Kids over 5:</strong> " +
+        escapeHtml(registration.kidsOver5) +
+    
+        "<br>" +
+    
+        "<strong>Kids under 5:</strong> " +
+        escapeHtml(registration.kidsUnder5) +
+    
+        "<br>" +
+    
+        "<strong>Veg Meals:</strong> " +
+        escapeHtml(registration.vegMeals) +
+    
+        "<br>" +
+    
+        "<strong>Non-Veg Meals:</strong> " +
+        escapeHtml(registration.nonVegMeals)
+    
+      );
+    
+    }
 
+    function escapeHtml(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    
     }
 
 
