@@ -1098,10 +1098,15 @@ function handleValidationResponse(
   document
     .getElementById(
       "checkInButton"
-    )
-    .classList
-    .remove("hidden");
+    );
+    // .classList
+    // .remove("hidden");
 
+  checkInButton.disabled = false;
+
+  checkInButton.classList.remove(
+    "hidden"
+  );
 
   /*
    * SHOW RESET
