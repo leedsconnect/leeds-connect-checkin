@@ -364,164 +364,336 @@
 
   <script>
 
-    function checkRegistration() {
-    
-      const id =
-        document
-          .getElementById("registrationId")
-          .value
-          .trim();
-    
-      if (!id) {
-    
+function checkRegistration() {
+
+  const rawText =
+    document
+      .getElementById("registrationId")
+      .value
+      .trim();
+
+
+  if (!rawText) {
+
+    showResult(
+      "error",
+      "Please enter a Registration ID."
+    );
+
+    return;
+  }
+
+
+  /*
+   * Extract LCD26-xxxxx from the QR text.
+   *
+   * Example QR text:
+   *
+   * Leeds Connect | Registration ID=LCD26-00001
+   */
+
+  const match =
+    rawText.match(/LCD26-\d{5}/i);
+
+
+  const registrationId =
+    match
+      ? match[0].toUpperCase()
+      : rawText;
+
+
+  /*
+   * Put the clean Registration ID
+   * back into the input box.
+   */
+
+  document
+    .getElementById("registrationId")
+    .value = registrationId;
+
+
+  showResult(
+    "warning",
+    "⏳ Checking registration..."
+  );
+
+
+  /*
+   * Unique JSONP callback name
+   */
+
+  const callbackName =
+    "leedsConnectCallback_" +
+    Date.now();
+
+
+  /*
+   * Apps Script API URL
+   */
+
+  const API_URL =
+    "https://script.google.com/macros/s/AKfycbxrDMxUztt-6b79War4qdJR216FzyZN8PJ7s2NP_RG6nP1QsHAx9HSmoqK6wmZTdrJrow/exec";
+
+
+  const url =
+    API_URL +
+    "?action=validate" +
+    "&registrationId=" +
+    encodeURIComponent(registrationId) +
+    "&callback=" +
+    callbackName;
+
+
+  /*
+   * Create JSONP callback
+   */
+
+  window[callbackName] =
+    function(data) {
+
+      try {
+
+        if (!data) {
+
+          showResult(
+            "error",
+            "❌ No response received from the registration system."
+          );
+
+          return;
+        }
+
+
+        /*
+         * Registration not found
+         */
+
+        if (data.success === false) {
+
+          showResult(
+            "error",
+            "❌ <strong>REGISTRATION NOT FOUND</strong><br><br>" +
+            escapeHtml(
+              data.message ||
+              "This Registration ID could not be found."
+            )
+          );
+
+          return;
+        }
+
+
+        /*
+         * Already checked in
+         */
+
+        if (data.alreadyCheckedIn) {
+
+          showResult(
+            "warning",
+            "⚠️ <strong>ALREADY CHECKED IN</strong><br><br>" +
+            formatRegistration(
+              data.registration
+            )
+          );
+
+          return;
+        }
+
+
+        /*
+         * Valid registration
+         */
+
+        if (data.valid) {
+
+          showResult(
+            "success",
+            "✅ <strong>VALID REGISTRATION</strong><br><br>" +
+            formatRegistration(
+              data.registration
+            )
+          );
+
+          return;
+        }
+
+
         showResult(
           "error",
-          "Please enter a Registration ID."
+          "❌ Registration could not be validated."
         );
-    
-        return;
+
+
+      } finally {
+
+        cleanupJsonp(
+          callbackName,
+          script
+        );
+
       }
-    
+    };
+
+
+  /*
+   * Create script element
+   */
+
+  const script =
+    document.createElement("script");
+
+
+  script.src = url;
+
+
+  script.onerror =
+    function() {
+
       showResult(
-        "warning",
-        "Checking registration..."
+        "error",
+        "❌ Unable to connect to the registration system."
       );
-    
-    
-      const API_URL =
-        "https://script.google.com/macros/s/AKfycbxrDMxUztt-6b79War4qdJR216FzyZN8PJ7s2NP_RG6nP1QsHAx9HSmoqK6wmZTdrJrow/exec";
-    
-    
-      const url =
-        API_URL +
-        "?action=validate&registrationId=" +
-        encodeURIComponent(id);
-    
-    
-      fetch(url)
-    
-        .then(function(response) {
-    
-          if (!response.ok) {
-    
-            throw new Error(
-              "Server returned " +
-              response.status
-            );
-    
-          }
-    
-          return response.json();
-    
-        })
-    
-        .then(function(data) {
-    
-          if (!data.success) {
-    
-            showResult(
-              "error",
-              "❌ " + data.message
-            );
-    
-            return;
-          }
-    
-    
-          if (data.alreadyCheckedIn) {
-    
-            showResult(
-              "warning",
-              "⚠️ <strong>ALREADY CHECKED IN</strong><br><br>" +
-              formatRegistration(data.registration)
-            );
-    
-            return;
-          }
-    
-    
-          if (data.valid) {
-    
-            showResult(
-              "success",
-              "✅ <strong>VALID REGISTRATION</strong><br><br>" +
-              formatRegistration(data.registration)
-            );
-    
-            return;
-          }
-    
-    
-          showResult(
-            "error",
-            "❌ Registration could not be validated."
-          );
-    
-        })
-    
-        .catch(function(error) {
-    
-          showResult(
-            "error",
-            "❌ Unable to connect to the registration system.<br><br>" +
-            error.message
-          );
-    
-        });
-    
-    }
 
-    function formatRegistration(registration) {
-
-      return (
-    
-        "<strong>Registration ID:</strong> " +
-        escapeHtml(registration.registrationId) +
-    
-        "<br><br>" +
-    
-        "<strong>Name:</strong> " +
-        escapeHtml(registration.name) +
-    
-        "<br>" +
-    
-        "<strong>Adults:</strong> " +
-        escapeHtml(registration.adults) +
-    
-        "<br>" +
-    
-        "<strong>Kids over 5:</strong> " +
-        escapeHtml(registration.kidsOver5) +
-    
-        "<br>" +
-    
-        "<strong>Kids under 5:</strong> " +
-        escapeHtml(registration.kidsUnder5) +
-    
-        "<br>" +
-    
-        "<strong>Veg Meals:</strong> " +
-        escapeHtml(registration.vegMeals) +
-    
-        "<br>" +
-    
-        "<strong>Non-Veg Meals:</strong> " +
-        escapeHtml(registration.nonVegMeals)
-    
+      cleanupJsonp(
+        callbackName,
+        script
       );
-    
-    }
 
-    function escapeHtml(value) {
+    };
 
-      return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    
+
+  document
+    .body
+    .appendChild(script);
+
+}
+
+  function cleanupJsonp(
+    callbackName,
+    script
+  ) {
+  
+    try {
+  
+      delete window[callbackName];
+  
+    } catch (e) {
+  
+      window[callbackName] =
+        undefined;
     }
+  
+  
+    if (
+      script &&
+      script.parentNode
+    ) {
+  
+      script.parentNode.removeChild(
+        script
+      );
+    }
+  
+  }
+
+    
+function formatRegistration(
+  registration
+) {
+
+  if (!registration) {
+
+    return "No registration details returned.";
+
+  }
+
+
+  return (
+
+    "<strong>Registration ID:</strong> " +
+    escapeHtml(
+      registration.registrationId
+    ) +
+
+    "<br><br>" +
+
+    "<strong>Name:</strong> " +
+    escapeHtml(
+      registration.name
+    ) +
+
+    "<br>" +
+
+    "<strong>Adults:</strong> " +
+    escapeHtml(
+      registration.adults
+    ) +
+
+    "<br>" +
+
+    "<strong>Kids over 5:</strong> " +
+    escapeHtml(
+      registration.kidsOver5
+    ) +
+
+    "<br>" +
+
+    "<strong>Kids under 5:</strong> " +
+    escapeHtml(
+      registration.kidsUnder5
+    ) +
+
+    "<br>" +
+
+    "<strong>Veg Meals:</strong> " +
+    escapeHtml(
+      registration.vegMeals
+    ) +
+
+    "<br>" +
+
+    "<strong>Non-Veg Meals:</strong> " +
+    escapeHtml(
+      registration.nonVegMeals
+    )
+
+  );
+
+}
+
+  function escapeHtml(value) {
+
+  return String(
+    value ?? ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
 
 
     function showResult(type, message) {
