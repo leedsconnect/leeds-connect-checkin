@@ -1234,26 +1234,29 @@ function performCheckIn() {
     .appendChild(script);
 
 
-  setTimeout(function() {
+/*
+ * Safety timeout.
+ *
+ * Apps Script may take several seconds to complete
+ * the Google Sheet update and return the JSONP response.
+ *
+ * Do NOT use a short 15-second timeout because the
+ * check-in may already have been written to the sheet.
+ */
+setTimeout(function() {
 
+  if (window[callbackName]) {
 
-    if (window[callbackName]) {
+    delete window[callbackName];
 
+    showResult(
+      "error",
+      "❌ Check-in system did not respond within the expected time.<br><br>" +
+      "Please wait a moment before scanning again."
+    );
+  }
 
-      delete window[callbackName];
-
-
-      showResult(
-
-        "error",
-
-        "❌ Check-in system did not respond."
-
-      );
-
-    }
-
-  }, 15000);
+}, 60000);
 
 }
 
