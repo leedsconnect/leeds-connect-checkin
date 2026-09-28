@@ -7,6 +7,7 @@
         content="width=device-width, initial-scale=1.0">
 
   <title>Leeds Connect Diwali 2026 - Check-in</title>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 
   <style>
 
@@ -206,20 +207,26 @@
     </div>
 
 
-    <div class="scanner-box">
+<div class="scanner-box">
 
-      <div class="scanner-title">
-        📷 Scan Registration QR Code
-      </div>
+  <div class="scanner-title">
+    📷 Scan Registration QR Code
+  </div>
 
-      <div class="scanner-note">
-        Ask the attendee to show the QR code
-        from their registration email.
-      </div>
+  <div class="scanner-note">
+    Tap the button below and allow camera access.
+  </div>
 
-      <div id="reader"></div>
+  <button
+    type="button"
+    class="check-button"
+    onclick="startScanner()">
+    📷 Open Camera & Scan QR
+  </button>
 
-    </div>
+  <div id="reader" style="margin-top:20px;"></div>
+
+</div>
 
 
     <div class="divider">
@@ -307,6 +314,92 @@
         "block";
     }
 
+let html5QrCode = null;
+let scannerRunning = false;
+
+function startScanner() {
+
+  if (scannerRunning) {
+    return;
+  }
+
+  const reader =
+    document.getElementById("reader");
+
+  reader.innerHTML = "";
+
+  html5QrCode =
+    new Html5Qrcode("reader");
+
+  const config = {
+    fps: 10,
+    qrbox: {
+      width: 250,
+      height: 250
+    }
+  };
+
+  html5QrCode.start(
+    { facingMode: "environment" },
+    config,
+
+    function(decodedText) {
+
+      scannerRunning = true;
+
+      document
+        .getElementById("registrationId")
+        .value = decodedText;
+
+      stopScanner();
+
+      checkRegistration();
+
+    },
+
+    function(errorMessage) {
+      // QR not detected yet — keep scanning.
+    }
+
+  ).then(function() {
+
+    scannerRunning = true;
+
+  }).catch(function(error) {
+
+    scannerRunning = false;
+
+    showResult(
+      "error",
+      "❌ Unable to access the camera.<br><br>" +
+      "Please allow camera access in your browser settings."
+    );
+
+  });
+}
+
+
+function stopScanner() {
+
+  if (
+    html5QrCode &&
+    scannerRunning
+  ) {
+
+    html5QrCode.stop()
+      .then(function() {
+
+        scannerRunning = false;
+
+      })
+      .catch(function() {
+
+        scannerRunning = false;
+
+      });
+  }
+}
+    
   </script>
 
 </body>
