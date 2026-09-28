@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>Leeds Connect Diwali 2026 - Check-in</title>
+  <title>
+    Leeds Connect Diwali 2026 - Check-in
+  </title>
 
   <script
     src="https://unpkg.com/html5-qrcode"
     type="text/javascript">
   </script>
+
 
   <style>
 
@@ -19,525 +26,882 @@
       box-sizing: border-box;
     }
 
+
     body {
+
       margin: 0;
+
       padding: 20px;
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background: #f7f4fb;
+
       color: #222;
     }
 
+
     .container {
+
       max-width: 500px;
+
       margin: 0 auto;
+
       background: white;
-      border-radius: 18px;
+
+      border-radius: 20px;
+
       padding: 25px 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+
+      box-shadow:
+        0 4px 20px
+        rgba(0,0,0,0.12);
     }
 
-    /* =========================
-       LEEDS CONNECT LOGO
-       ========================= */
+
+    /* =========================================
+       LOGO
+       ========================================= */
 
     .logo {
+
       text-align: center;
+
       margin-bottom: 12px;
     }
 
+
     .logo img {
-      width: 130px;
-      height: 130px;
+
+      width: 150px;
+
+      height: 150px;
+
+      max-width: 100%;
+
       object-fit: contain;
-      display: block;
-      margin: 0 auto;
+
+      border-radius: 50%;
     }
 
-    /* =========================
-       BRANDING
-       ========================= */
+
+    /* =========================================
+       BRAND
+       ========================================= */
 
     .brand {
+
       text-align: center;
+
       margin-bottom: 20px;
     }
 
+
     .brand-title {
+
       font-size: 30px;
+
       font-weight: 800;
+
       margin-bottom: 5px;
     }
 
+
     .brand-tagline {
+
       font-size: 18px;
+
       font-weight: 700;
     }
 
-    /* =========================
+
+    /* =========================================
        EVENT
-       ========================= */
+       ========================================= */
 
     .event-title {
+
       text-align: center;
+
       font-size: 23px;
+
       font-weight: 800;
+
       margin-top: 25px;
+
+      margin-bottom: 10px;
     }
+
 
     .event-info {
+
       text-align: center;
+
       line-height: 1.7;
+
       margin-bottom: 25px;
+
+      color: #444;
     }
 
-    /* =========================
-       QR SCANNER
-       ========================= */
+
+    /* =========================================
+       SCANNER
+       ========================================= */
 
     .scanner-box {
-      border: 2px dashed #6b2aa8;
+
+      border:
+        2px dashed
+        #6b2aa8;
+
       border-radius: 15px;
+
       padding: 20px;
+
       text-align: center;
+
       margin-bottom: 20px;
     }
 
+
     .scanner-title {
+
       font-size: 20px;
+
       font-weight: 700;
+
       margin-bottom: 10px;
     }
 
+
     .scanner-note {
+
       font-size: 14px;
+
       color: #666;
+
       margin-bottom: 15px;
     }
 
+
     #reader {
+
       width: 100%;
+
       margin: auto;
     }
 
-    /* =========================
-       DIVIDER
-       ========================= */
 
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 25px 0;
-      color: #777;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: #ddd;
-    }
-
-    /* =========================
-       MANUAL REGISTRATION
-       ========================= */
-
-    .manual-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 9px;
-      font-size: 17px;
-      margin-bottom: 12px;
-    }
+    /* =========================================
+       BUTTONS
+       ========================================= */
 
     button {
+
       width: 100%;
+
       padding: 14px;
+
       border: none;
+
       border-radius: 9px;
+
       font-size: 17px;
+
       font-weight: 700;
+
       cursor: pointer;
     }
 
+
     .check-button {
+
       background: #6b2aa8;
+
       color: white;
     }
 
-    /* =========================
-       RESULTS
-       ========================= */
 
-    .result {
-      display: none;
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 12px;
-      text-align: center;
+    .check-button:disabled {
+
+      background: #aaa;
+
+      cursor: not-allowed;
     }
 
-    .success {
-      background: #e8f7ed;
-      border: 1px solid #4caf50;
-    }
 
-    .error {
-      background: #fdeaea;
-      border: 1px solid #d32f2f;
-    }
+    /* =========================================
+       DIVIDER
+       ========================================= */
 
-    .warning {
-      background: #fff6df;
-      border: 1px solid #e0a800;
-    }
+    .divider {
 
-    /* =========================
-       FOOTER
-       ========================= */
+      display: flex;
 
-    .footer {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
+      align-items: center;
+
+      gap: 10px;
+
+      margin: 25px 0;
+
       color: #777;
     }
 
+
+    .divider::before,
+    .divider::after {
+
+      content: "";
+
+      flex: 1;
+
+      height: 1px;
+
+      background: #ddd;
+    }
+
+
+    /* =========================================
+       MANUAL ENTRY
+       ========================================= */
+
+    .manual-title {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      margin-bottom: 10px;
+    }
+
+
+    input {
+
+      width: 100%;
+
+      padding: 14px;
+
+      border:
+        1px solid #ccc;
+
+      border-radius: 9px;
+
+      font-size: 17px;
+
+      margin-bottom: 12px;
+    }
+
+
+    /* =========================================
+       RESULT
+       ========================================= */
+
+    .result {
+
+      display: none;
+
+      margin-top: 20px;
+
+      padding: 18px;
+
+      border-radius: 12px;
+
+      text-align: center;
+
+      line-height: 1.6;
+    }
+
+
+    .success {
+
+      background: #e8f7ed;
+
+      border:
+        1px solid #4caf50;
+    }
+
+
+    .error {
+
+      background: #fdeaea;
+
+      border:
+        1px solid #d32f2f;
+    }
+
+
+    .warning {
+
+      background: #fff6df;
+
+      border:
+        1px solid #e0a800;
+    }
+
+
+    .registration-card {
+
+      text-align: left;
+
+      margin-top: 12px;
+
+      line-height: 1.7;
+    }
+
+
+    .registration-card strong {
+
+      color: #333;
+    }
+
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+
+    .footer {
+
+      text-align: center;
+
+      margin-top: 25px;
+
+      font-size: 13px;
+
+      color: #777;
+    }
+
+
   </style>
+
 </head>
+
 
 <body>
 
-  <div class="container">
 
-    <!-- =========================
-         LEEDS CONNECT LOGO
-         ========================= -->
-
-    <div class="logo">
-      <img
-        src="Logo.jpeg"
-        alt="Leeds Connect Logo">
-    </div>
+<div class="container">
 
 
-    <!-- =========================
-         BRANDING
-         ========================= -->
+  <!-- ========================================
+       LOGO
+       ======================================== -->
 
-    <div class="brand">
+  <div class="logo">
 
-      <div class="brand-title">
-        Leeds Connect
-      </div>
-
-      <div class="brand-tagline">
-        Bringing People Together
-      </div>
-
-    </div>
-
-
-    <!-- =========================
-         EVENT TITLE
-         ========================= -->
-
-    <div class="event-title">
-      Leeds Connect Diwali 2026
-    </div>
-
-
-    <div class="event-info">
-
-      📅 14 November 2026<br>
-
-      ⏰ 15:00 – 22:00<br>
-
-      📍 Aria Suite, Woodhouse St,<br>
-      Woodhouse, Leeds LS6 2JH
-
-    </div>
-
-
-    <!-- =========================
-         QR SCANNER
-         ========================= -->
-
-    <div class="scanner-box">
-
-      <div class="scanner-title">
-        📷 Scan Registration QR Code
-      </div>
-
-      <div class="scanner-note">
-        Tap the button below and allow camera access.
-      </div>
-
-      <button
-        type="button"
-        class="check-button"
-        onclick="startScanner()">
-
-        📷 Open Camera & Scan QR
-
-      </button>
-
-      <div
-        id="reader"
-        style="margin-top:20px;">
-      </div>
-
-    </div>
-
-
-    <!-- =========================
-         DIVIDER
-         ========================= -->
-
-    <div class="divider">
-      OR
-    </div>
-
-
-    <!-- =========================
-         MANUAL REGISTRATION
-         ========================= -->
-
-    <div class="manual-title">
-      Enter Registration ID
-    </div>
-
-
-    <input
-      type="text"
-      id="registrationId"
-      placeholder="Example: LCD26-00001"
-      autocomplete="off"
+    <img
+      src="Logo.jpeg"
+      alt="Leeds Connect Logo"
     >
 
-
-    <button
-      class="check-button"
-      onclick="checkRegistration()">
-
-      Check Registration
-
-    </button>
+  </div>
 
 
-    <!-- =========================
-         RESULT
-         ========================= -->
+  <!-- ========================================
+       BRAND
+       ======================================== -->
 
-    <div
-      id="result"
-      class="result">
+  <div class="brand">
+
+    <div class="brand-title">
+      Leeds Connect
     </div>
 
-
-    <!-- =========================
-         FOOTER
-         ========================= -->
-
-    <div class="footer">
-
-      Leeds Connect Diwali 2026<br>
-
-      Volunteer Check-in
-
+    <div class="brand-tagline">
+      Bringing People Together
     </div>
 
   </div>
 
 
-  <!-- =========================
-       JAVASCRIPT
-       ========================= -->
+  <!-- ========================================
+       EVENT
+       ======================================== -->
 
-  <script>
+  <div class="event-title">
+
+    Leeds Connect Diwali 2026
+
+  </div>
+
+
+  <div class="event-info">
+
+    📅 14 November 2026<br>
+
+    ⏰ 15:00 – 22:00<br>
+
+    📍 Aria Suite, Woodhouse St,<br>
+    Woodhouse, Leeds LS6 2JH
+
+  </div>
+
+
+  <!-- ========================================
+       QR SCANNER
+       ======================================== -->
+
+  <div class="scanner-box">
+
+
+    <div class="scanner-title">
+
+      📷 Scan Registration QR Code
+
+    </div>
+
+
+    <div class="scanner-note">
+
+      Tap the button below and allow camera access.
+
+    </div>
+
+
+    <button
+      type="button"
+      id="scanButton"
+      class="check-button"
+      onclick="startScanner()"
+    >
+
+      📷 Open Camera & Scan QR
+
+    </button>
+
+
+    <div
+      id="reader"
+      style="margin-top:20px;"
+    ></div>
+
+
+  </div>
+
+
+  <!-- ========================================
+       DIVIDER
+       ======================================== -->
+
+  <div class="divider">
+
+    OR
+
+  </div>
+
+
+  <!-- ========================================
+       MANUAL REGISTRATION
+       ======================================== -->
+
+  <div class="manual-title">
+
+    Enter Registration ID
+
+  </div>
+
+
+  <input
+    type="text"
+    id="registrationId"
+    placeholder="Example: LCD26-00001"
+    autocomplete="off"
+  >
+
+
+  <button
+    id="checkButton"
+    class="check-button"
+    onclick="checkRegistration()"
+  >
+
+    Check Registration
+
+  </button>
+
+
+  <!-- ========================================
+       RESULT
+       ======================================== -->
+
+  <div
+    id="result"
+    class="result">
+  </div>
+
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+
+  <div class="footer">
+
+    Leeds Connect Diwali 2026<br>
+
+    Volunteer Check-in
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =================================================
+   APPS SCRIPT WEB APP URL
+   ================================================= */
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbxrDMxUztt-6b79War4qdJR216FzyZN8PJ7s2NP_RG6nP1QsHAx9HSmoqK6wmZTdrJrow/exec";
+
+
+/* =================================================
+   QR SCANNER VARIABLES
+   ================================================= */
+
+let html5QrCode = null;
+
+let scannerRunning = false;
+
+
+/* =================================================
+   CLEAN QR CONTENT
+   ================================================= */
+
+function extractRegistrationId(value) {
+
+  if (!value) {
+
+    return "";
+  }
+
+
+  value =
+    String(value).trim();
+
+
+  /*
+   * If QR contains:
+   *
+   * Leeds Connect | Registration ID=LCD26-00001
+   *
+   * extract only:
+   *
+   * LCD26-00001
+   */
+
+
+  const match =
+    value.match(
+      /Registration\s*ID\s*=\s*(LCD26-[A-Za-z0-9-]+)/i
+    );
+
+
+  if (match) {
+
+    return match[1].trim();
+  }
+
+
+  /*
+   * If QR contains only LCD26-00001
+   */
+
+  const directMatch =
+    value.match(
+      /(LCD26-[A-Za-z0-9-]+)/i
+    );
+
+
+  if (directMatch) {
+
+    return directMatch[1].trim();
+  }
+
+
+  /*
+   * Otherwise return original text
+   */
+
+  return value;
+}
+
+
+/* =================================================
+   START QR SCANNER
+   ================================================= */
+
+function startScanner() {
+
+
+  if (scannerRunning) {
+
+    return;
+  }
+
+
+  const reader =
+    document.getElementById("reader");
+
+
+  reader.innerHTML = "";
+
+
+  html5QrCode =
+    new Html5Qrcode("reader");
+
+
+  const config = {
+
+    fps: 10,
+
+    qrbox: {
+      width: 250,
+      height: 250
+    }
+
+  };
+
+
+  html5QrCode.start(
+
+    {
+      facingMode: "environment"
+    },
+
+    config,
+
+
+    function(decodedText) {
+
+
+      /*
+       * QR detected
+       */
+
+      const registrationId =
+        extractRegistrationId(decodedText);
+
+
+      document
+        .getElementById("registrationId")
+        .value =
+        registrationId;
+
+
+      stopScanner();
+
+
+      /*
+       * Automatically validate
+       */
+
+      checkRegistration();
+
+    },
+
+
+    function(errorMessage) {
+
+      /*
+       * QR not detected yet.
+       * Continue scanning.
+       */
+
+    }
+
+  )
+
+
+  .then(function() {
+
+    scannerRunning = true;
+
+    document
+      .getElementById("scanButton")
+      .innerText =
+      "📷 Scanning...";
+
+  })
+
+
+  .catch(function(error) {
+
+    scannerRunning = false;
+
+    showResult(
+
+      "error",
+
+      "❌ Unable to access the camera.<br><br>" +
+
+      "Please allow camera access in your browser settings."
+
+    );
+
+  });
+
+}
+
+
+/* =================================================
+   STOP QR SCANNER
+   ================================================= */
+
+function stopScanner() {
+
+
+  if (
+    html5QrCode &&
+    scannerRunning
+  ) {
+
+
+    html5QrCode
+      .stop()
+
+
+      .then(function() {
+
+        scannerRunning = false;
+
+        document
+          .getElementById("scanButton")
+          .innerText =
+          "📷 Open Camera & Scan QR";
+
+      })
+
+
+      .catch(function() {
+
+        scannerRunning = false;
+
+      });
+
+  }
+
+}
+
+
+/* =================================================
+   CHECK REGISTRATION
+   ================================================= */
 
 function checkRegistration() {
 
-  const rawText =
+
+  let id =
     document
       .getElementById("registrationId")
       .value
       .trim();
 
 
-  if (!rawText) {
+  /*
+   * Clean QR text in case somebody
+   * manually pasted the QR contents.
+   */
+
+  id =
+    extractRegistrationId(id);
+
+
+  document
+    .getElementById("registrationId")
+    .value =
+    id;
+
+
+  if (!id) {
 
     showResult(
+
       "error",
-      "Please enter a Registration ID."
+
+      "❌ Please enter a Registration ID."
+
     );
 
     return;
   }
 
 
-  /*
-   * Extract LCD26-xxxxx from the QR text.
-   *
-   * Example QR text:
-   *
-   * Leeds Connect | Registration ID=LCD26-00001
-   */
-
-  const match =
-    rawText.match(/LCD26-\d{5}/i);
-
-
-  const registrationId =
-    match
-      ? match[0].toUpperCase()
-      : rawText;
-
-
-  /*
-   * Put the clean Registration ID
-   * back into the input box.
-   */
-
-  document
-    .getElementById("registrationId")
-    .value = registrationId;
-
-
   showResult(
+
     "warning",
+
     "⏳ Checking registration..."
+
   );
 
 
+  document
+    .getElementById("checkButton")
+    .disabled =
+    true;
+
+
   /*
-   * Unique JSONP callback name
+   * JSONP callback name
    */
 
   const callbackName =
-    "leedsConnectCallback_" +
+    "registrationCallback_" +
     Date.now();
 
 
   /*
-   * Apps Script API URL
+   * Create global callback
    */
 
-  const API_URL =
-    "https://script.google.com/macros/s/AKfycbxrDMxUztt-6b79War4qdJR216FzyZN8PJ7s2NP_RG6nP1QsHAx9HSmoqK6wmZTdrJrow/exec";
+  window[callbackName] =
+    function(response) {
 
+
+      try {
+
+        handleValidationResponse(response);
+
+      }
+
+      finally {
+
+        /*
+         * Clean up callback
+         */
+
+        delete window[callbackName];
+
+      }
+
+    };
+
+
+  /*
+   * Build API URL
+   */
 
   const url =
     API_URL +
     "?action=validate" +
     "&registrationId=" +
-    encodeURIComponent(registrationId) +
+    encodeURIComponent(id) +
     "&callback=" +
-    callbackName;
+    encodeURIComponent(callbackName);
 
 
   /*
-   * Create JSONP callback
-   */
-
-  window[callbackName] =
-    function(data) {
-
-      try {
-
-        if (!data) {
-
-          showResult(
-            "error",
-            "❌ No response received from the registration system."
-          );
-
-          return;
-        }
-
-
-        /*
-         * Registration not found
-         */
-
-        if (data.success === false) {
-
-          showResult(
-            "error",
-            "❌ <strong>REGISTRATION NOT FOUND</strong><br><br>" +
-            escapeHtml(
-              data.message ||
-              "This Registration ID could not be found."
-            )
-          );
-
-          return;
-        }
-
-
-        /*
-         * Already checked in
-         */
-
-        if (data.alreadyCheckedIn) {
-
-          showResult(
-            "warning",
-            "⚠️ <strong>ALREADY CHECKED IN</strong><br><br>" +
-            formatRegistration(
-              data.registration
-            )
-          );
-
-          return;
-        }
-
-
-        /*
-         * Valid registration
-         */
-
-        if (data.valid) {
-
-          showResult(
-            "success",
-            "✅ <strong>VALID REGISTRATION</strong><br><br>" +
-            formatRegistration(
-              data.registration
-            )
-          );
-
-          return;
-        }
-
-
-        showResult(
-          "error",
-          "❌ Registration could not be validated."
-        );
-
-
-      } finally {
-
-        cleanupJsonp(
-          callbackName,
-          script
-        );
-
-      }
-    };
-
-
-  /*
-   * Create script element
+   * Create script tag.
+   *
+   * This avoids the cross-origin
+   * fetch problem between GitHub
+   * Pages and Apps Script.
    */
 
   const script =
@@ -550,14 +914,24 @@ function checkRegistration() {
   script.onerror =
     function() {
 
-      showResult(
-        "error",
-        "❌ Unable to connect to the registration system."
-      );
 
-      cleanupJsonp(
-        callbackName,
-        script
+      delete window[callbackName];
+
+
+      document
+        .getElementById("checkButton")
+        .disabled =
+        false;
+
+
+      showResult(
+
+        "error",
+
+        "❌ Unable to connect to the registration system.<br><br>" +
+
+        "Please check your internet connection or try again."
+
       );
 
     };
@@ -567,65 +941,417 @@ function checkRegistration() {
     .body
     .appendChild(script);
 
+
+  /*
+   * Safety timeout
+   */
+
+  setTimeout(function() {
+
+
+    if (window[callbackName]) {
+
+
+      delete window[callbackName];
+
+
+      document
+        .getElementById("checkButton")
+        .disabled =
+        false;
+
+
+      showResult(
+
+        "error",
+
+        "❌ Registration system did not respond.<br><br>" +
+
+        "Please try again."
+
+      );
+
+    }
+
+  }, 15000);
+
 }
 
-  function cleanupJsonp(
-    callbackName,
-    script
-  ) {
-  
-    try {
-  
-      delete window[callbackName];
-  
-    } catch (e) {
-  
-      window[callbackName] =
-        undefined;
-    }
-  
-  
-    if (
-      script &&
-      script.parentNode
-    ) {
-  
-      script.parentNode.removeChild(
-        script
-      );
-    }
-  
-  }
 
-    
-function formatRegistration(
-  registration
-) {
+/* =================================================
+   VALIDATION RESPONSE
+   ================================================= */
 
-  if (!registration) {
+function handleValidationResponse(response) {
 
-    return "No registration details returned.";
 
+  document
+    .getElementById("checkButton")
+    .disabled =
+    false;
+
+
+  if (!response) {
+
+    showResult(
+
+      "error",
+
+      "❌ No response received."
+
+    );
+
+    return;
   }
 
 
-  return (
+  /*
+   * Registration not found
+   */
 
-    "<strong>Registration ID:</strong> " +
-    escapeHtml(
-      registration.registrationId
-    ) +
+  if (!response.success) {
 
-    "<br><br>" +
+    showResult(
+
+      "error",
+
+      "❌ " +
+      escapeHtml(
+        response.message ||
+        "Registration not found."
+      )
+
+    );
+
+    return;
+  }
+
+
+  const registration =
+    response.registration;
+
+
+  /*
+   * Already checked in
+   */
+
+  if (response.alreadyCheckedIn) {
+
+
+    showResult(
+
+      "warning",
+
+      "⚠️ <strong>ALREADY CHECKED IN</strong>" +
+
+      "<div class='registration-card'>" +
+
+      "<strong>Name:</strong> " +
+      escapeHtml(registration.name) +
+
+      "<br>" +
+
+      "<strong>Registration ID:</strong> " +
+      escapeHtml(registration.registrationId) +
+
+      "<br>" +
+
+      "<strong>Checked-in By:</strong> " +
+      escapeHtml(registration.checkedInBy || "") +
+
+      "<br>" +
+
+      "<strong>Check-in Time:</strong> " +
+      escapeHtml(registration.checkInTime || "") +
+
+      "</div>"
+
+    );
+
+    return;
+  }
+
+
+  /*
+   * Valid registration
+   */
+
+  showResult(
+
+    "success",
+
+    "✅ <strong>VALID REGISTRATION</strong>" +
+
+    "<div class='registration-card'>" +
 
     "<strong>Name:</strong> " +
+    escapeHtml(registration.name) +
+
+    "<br>" +
+
+    "<strong>Registration ID:</strong> " +
+    escapeHtml(registration.registrationId) +
+
+    "<br>" +
+
+    "<strong>Adults:</strong> " +
+    escapeHtml(registration.adults) +
+
+    "<br>" +
+
+    "<strong>Kids over 5:</strong> " +
+    escapeHtml(registration.kidsOver5) +
+
+    "<br>" +
+
+    "<strong>Kids under 5:</strong> " +
+    escapeHtml(registration.kidsUnder5) +
+
+    "<br>" +
+
+    "<strong>Veg Meals:</strong> " +
+    escapeHtml(registration.vegMeals) +
+
+    "<br>" +
+
+    "<strong>Non-Veg Meals:</strong> " +
+    escapeHtml(registration.nonVegMeals) +
+
+    "</div>" +
+
+    "<br>" +
+
+    "<button " +
+
+      "class='check-button' " +
+
+      "onclick='performCheckIn()'>" +
+
+      "✅ CHECK IN" +
+
+    "</button>"
+
+  );
+
+}
+
+
+/* =================================================
+   ACTUAL CHECK-IN
+   ================================================= */
+
+function performCheckIn() {
+
+
+  let id =
+    document
+      .getElementById("registrationId")
+      .value
+      .trim();
+
+
+  id =
+    extractRegistrationId(id);
+
+
+  showResult(
+
+    "warning",
+
+    "⏳ Processing check-in..."
+
+  );
+
+
+  const callbackName =
+    "checkinCallback_" +
+    Date.now();
+
+
+  window[callbackName] =
+    function(response) {
+
+
+      try {
+
+        handleCheckInResponse(response);
+
+      }
+
+      finally {
+
+        delete window[callbackName];
+
+      }
+
+    };
+
+
+  const url =
+    API_URL +
+    "?action=checkin" +
+
+    "&registrationId=" +
+    encodeURIComponent(id) +
+
+    "&checkedInBy=" +
+    encodeURIComponent("Volunteer") +
+
+    "&notes=" +
+    encodeURIComponent("") +
+
+    "&callback=" +
+    encodeURIComponent(callbackName);
+
+
+  const script =
+    document.createElement("script");
+
+
+  script.src = url;
+
+
+  script.onerror =
+    function() {
+
+
+      delete window[callbackName];
+
+
+      showResult(
+
+        "error",
+
+        "❌ Unable to connect to the check-in system."
+
+      );
+
+    };
+
+
+  document
+    .body
+    .appendChild(script);
+
+
+  setTimeout(function() {
+
+
+    if (window[callbackName]) {
+
+
+      delete window[callbackName];
+
+
+      showResult(
+
+        "error",
+
+        "❌ Check-in system did not respond."
+
+      );
+
+    }
+
+  }, 15000);
+
+}
+
+
+/* =================================================
+   CHECK-IN RESPONSE
+   ================================================= */
+
+function handleCheckInResponse(response) {
+
+
+  if (!response) {
+
+    showResult(
+
+      "error",
+
+      "❌ No response received."
+
+    );
+
+    return;
+  }
+
+
+  if (!response.success) {
+
+
+    if (response.alreadyCheckedIn) {
+
+
+      showResult(
+
+        "warning",
+
+        "⚠️ <strong>ALREADY CHECKED IN</strong><br><br>" +
+
+        escapeHtml(
+          response.message
+        )
+
+      );
+
+    }
+
+    else {
+
+
+      showResult(
+
+        "error",
+
+        "❌ " +
+
+        escapeHtml(
+          response.message ||
+          "Check-in failed."
+        )
+
+      );
+
+    }
+
+
+    return;
+  }
+
+
+  const registration =
+    response.registration;
+
+
+  showResult(
+
+    "success",
+
+    "🎉 <strong>CHECK-IN SUCCESSFUL</strong>" +
+
+    "<div class='registration-card'>" +
+
+    "<strong>Name:</strong> " +
+
     escapeHtml(
       registration.name
     ) +
 
     "<br>" +
 
+    "<strong>Registration ID:</strong> " +
+
+    escapeHtml(
+      registration.registrationId
+    ) +
+
+    "<br>" +
+
     "<strong>Adults:</strong> " +
+
     escapeHtml(
       registration.adults
     ) +
@@ -633,6 +1359,7 @@ function formatRegistration(
     "<br>" +
 
     "<strong>Kids over 5:</strong> " +
+
     escapeHtml(
       registration.kidsOver5
     ) +
@@ -640,6 +1367,7 @@ function formatRegistration(
     "<br>" +
 
     "<strong>Kids under 5:</strong> " +
+
     escapeHtml(
       registration.kidsUnder5
     ) +
@@ -647,6 +1375,7 @@ function formatRegistration(
     "<br>" +
 
     "<strong>Veg Meals:</strong> " +
+
     escapeHtml(
       registration.vegMeals
     ) +
@@ -654,195 +1383,82 @@ function formatRegistration(
     "<br>" +
 
     "<strong>Non-Veg Meals:</strong> " +
+
     escapeHtml(
       registration.nonVegMeals
-    )
+    ) +
+
+    "</div>"
 
   );
 
-}
 
-  function escapeHtml(value) {
+  /*
+   * Clear registration field
+   */
 
-  return String(
-    value ?? ""
-  )
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+  document
+    .getElementById("registrationId")
+    .value = "";
 
 }
 
 
-    function showResult(type, message) {
+/* =================================================
+   RESULT DISPLAY
+   ================================================= */
 
-      const result =
-        document.getElementById("result");
+function showResult(type, message) {
 
 
-      result.className =
-        "result " + type;
+  const result =
+    document.getElementById("result");
 
 
-      result.innerHTML =
-        message;
+  result.className =
+    "result " + type;
 
 
-      result.style.display =
-        "block";
+  result.innerHTML =
+    message;
 
-    }
 
+  result.style.display =
+    "block";
 
-    /* =========================
-       QR CODE SCANNER
-       ========================= */
 
-    let html5QrCode = null;
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
 
-    let scannerRunning = false;
+}
 
 
-    function startScanner() {
+/* =================================================
+   HTML ESCAPE
+   ================================================= */
 
-      if (scannerRunning) {
-        return;
-      }
+function escapeHtml(text) {
 
 
-      const reader =
-        document.getElementById("reader");
+  return String(text || "")
 
+    .replace(/&/g, "&amp;")
 
-      reader.innerHTML = "";
+    .replace(/</g, "&lt;")
 
+    .replace(/>/g, "&gt;")
 
-      html5QrCode =
-        new Html5Qrcode("reader");
+    .replace(/"/g, "&quot;")
 
+    .replace(/'/g, "&#039;");
+}
 
-      const config = {
 
-        fps: 10,
+</script>
 
-        qrbox: {
-          width: 250,
-          height: 250
-        }
-
-      };
-
-
-      html5QrCode.start(
-
-        { facingMode: "environment" },
-
-        config,
-
-
-        function(decodedText) {
-
-          scannerRunning = true;
-
-
-          document
-            .getElementById("registrationId")
-            .value = decodedText;
-
-
-          stopScanner();
-
-
-          checkRegistration();
-
-        },
-
-
-        function(errorMessage) {
-
-          /*
-           * QR not detected yet —
-           * keep scanning.
-           */
-
-        }
-
-      )
-
-      .then(function() {
-
-        scannerRunning = true;
-
-      })
-
-      .catch(function(error) {
-
-        scannerRunning = false;
-
-
-        showResult(
-
-          "error",
-
-          "❌ Unable to access the camera.<br><br>" +
-
-          "Please allow camera access in your browser settings."
-
-        );
-
-      });
-
-    }
-
-
-    function stopScanner() {
-
-      if (
-        html5QrCode &&
-        scannerRunning
-      ) {
-
-        html5QrCode.stop()
-
-          .then(function() {
-
-            scannerRunning = false;
-
-          })
-
-          .catch(function() {
-
-            scannerRunning = false;
-
-          });
-
-      }
-
-    }
-
-  </script>
 
 </body>
+
 </html>
