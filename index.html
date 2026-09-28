@@ -1720,11 +1720,16 @@ function resetPage() {
   document
     .getElementById(
       "checkInButton"
-    )
-    .classList
-    .add("hidden");
+    );
+    // .classList
+    // .add("hidden");
 
-
+  checkInButton.disabled = false;
+  
+  checkInButton.classList.add(
+    "hidden"
+  );
+  
   /*
    * HIDE RESET
    */
