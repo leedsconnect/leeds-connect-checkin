@@ -7,7 +7,11 @@
         content="width=device-width, initial-scale=1.0">
 
   <title>Leeds Connect Diwali 2026 - Check-in</title>
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
+  <script
+    src="https://unpkg.com/html5-qrcode"
+    type="text/javascript">
+  </script>
 
   <style>
 
@@ -32,16 +36,26 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.12);
     }
 
+    /* =========================
+       LEEDS CONNECT LOGO
+       ========================= */
+
     .logo {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .logo img {
-      max-width: 180px;
-      max-height: 100px;
+      width: 130px;
+      height: 130px;
       object-fit: contain;
+      display: block;
+      margin: 0 auto;
     }
+
+    /* =========================
+       BRANDING
+       ========================= */
 
     .brand {
       text-align: center;
@@ -59,6 +73,10 @@
       font-weight: 700;
     }
 
+    /* =========================
+       EVENT
+       ========================= */
+
     .event-title {
       text-align: center;
       font-size: 23px;
@@ -71,6 +89,10 @@
       line-height: 1.7;
       margin-bottom: 25px;
     }
+
+    /* =========================
+       QR SCANNER
+       ========================= */
 
     .scanner-box {
       border: 2px dashed #6b2aa8;
@@ -97,6 +119,10 @@
       margin: auto;
     }
 
+    /* =========================
+       DIVIDER
+       ========================= */
+
     .divider {
       display: flex;
       align-items: center;
@@ -112,6 +138,10 @@
       height: 1px;
       background: #ddd;
     }
+
+    /* =========================
+       MANUAL REGISTRATION
+       ========================= */
 
     .manual-title {
       font-size: 18px;
@@ -143,6 +173,10 @@
       color: white;
     }
 
+    /* =========================
+       RESULTS
+       ========================= */
+
     .result {
       display: none;
       margin-top: 20px;
@@ -166,6 +200,10 @@
       border: 1px solid #e0a800;
     }
 
+    /* =========================
+       FOOTER
+       ========================= */
+
     .footer {
       text-align: center;
       margin-top: 25px;
@@ -180,11 +218,23 @@
 
   <div class="container">
 
+    <!-- =========================
+         LEEDS CONNECT LOGO
+         ========================= -->
+
     <div class="logo">
-      <!-- We will add your Leeds Connect logo later -->
+      <img
+        src="Logo.jpeg"
+        alt="Leeds Connect Logo">
     </div>
 
+
+    <!-- =========================
+         BRANDING
+         ========================= -->
+
     <div class="brand">
+
       <div class="brand-title">
         Leeds Connect
       </div>
@@ -192,51 +242,79 @@
       <div class="brand-tagline">
         Bringing People Together
       </div>
+
     </div>
 
+
+    <!-- =========================
+         EVENT TITLE
+         ========================= -->
 
     <div class="event-title">
       Leeds Connect Diwali 2026
     </div>
 
+
     <div class="event-info">
+
       📅 14 November 2026<br>
+
       ⏰ 15:00 – 22:00<br>
+
       📍 Aria Suite, Woodhouse St,<br>
       Woodhouse, Leeds LS6 2JH
+
     </div>
 
 
-<div class="scanner-box">
+    <!-- =========================
+         QR SCANNER
+         ========================= -->
 
-  <div class="scanner-title">
-    📷 Scan Registration QR Code
-  </div>
+    <div class="scanner-box">
 
-  <div class="scanner-note">
-    Tap the button below and allow camera access.
-  </div>
+      <div class="scanner-title">
+        📷 Scan Registration QR Code
+      </div>
 
-  <button
-    type="button"
-    class="check-button"
-    onclick="startScanner()">
-    📷 Open Camera & Scan QR
-  </button>
+      <div class="scanner-note">
+        Tap the button below and allow camera access.
+      </div>
 
-  <div id="reader" style="margin-top:20px;"></div>
+      <button
+        type="button"
+        class="check-button"
+        onclick="startScanner()">
 
-</div>
+        📷 Open Camera & Scan QR
 
+      </button>
+
+      <div
+        id="reader"
+        style="margin-top:20px;">
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         DIVIDER
+         ========================= -->
 
     <div class="divider">
       OR
     </div>
 
 
+    <!-- =========================
+         MANUAL REGISTRATION
+         ========================= -->
+
     <div class="manual-title">
       Enter Registration ID
     </div>
+
 
     <input
       type="text"
@@ -245,12 +323,19 @@
       autocomplete="off"
     >
 
+
     <button
       class="check-button"
       onclick="checkRegistration()">
+
       Check Registration
+
     </button>
 
+
+    <!-- =========================
+         RESULT
+         ========================= -->
 
     <div
       id="result"
@@ -258,13 +343,24 @@
     </div>
 
 
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
     <div class="footer">
+
       Leeds Connect Diwali 2026<br>
+
       Volunteer Check-in
+
     </div>
 
   </div>
 
+
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
 
   <script>
 
@@ -276,6 +372,7 @@
           .value
           .trim();
 
+
       if (!id) {
 
         showResult(
@@ -286,10 +383,12 @@
         return;
       }
 
+
       showResult(
         "warning",
         "Checking registration..."
       );
+
 
       /*
        * Backend connection will be added
@@ -304,102 +403,147 @@
       const result =
         document.getElementById("result");
 
+
       result.className =
         "result " + type;
+
 
       result.innerHTML =
         message;
 
+
       result.style.display =
         "block";
+
     }
 
-let html5QrCode = null;
-let scannerRunning = false;
 
-function startScanner() {
+    /* =========================
+       QR CODE SCANNER
+       ========================= */
 
-  if (scannerRunning) {
-    return;
-  }
+    let html5QrCode = null;
 
-  const reader =
-    document.getElementById("reader");
-
-  reader.innerHTML = "";
-
-  html5QrCode =
-    new Html5Qrcode("reader");
-
-  const config = {
-    fps: 10,
-    qrbox: {
-      width: 250,
-      height: 250
-    }
-  };
-
-  html5QrCode.start(
-    { facingMode: "environment" },
-    config,
-
-    function(decodedText) {
-
-      scannerRunning = true;
-
-      document
-        .getElementById("registrationId")
-        .value = decodedText;
-
-      stopScanner();
-
-      checkRegistration();
-
-    },
-
-    function(errorMessage) {
-      // QR not detected yet — keep scanning.
-    }
-
-  ).then(function() {
-
-    scannerRunning = true;
-
-  }).catch(function(error) {
-
-    scannerRunning = false;
-
-    showResult(
-      "error",
-      "❌ Unable to access the camera.<br><br>" +
-      "Please allow camera access in your browser settings."
-    );
-
-  });
-}
+    let scannerRunning = false;
 
 
-function stopScanner() {
+    function startScanner() {
 
-  if (
-    html5QrCode &&
-    scannerRunning
-  ) {
+      if (scannerRunning) {
+        return;
+      }
 
-    html5QrCode.stop()
+
+      const reader =
+        document.getElementById("reader");
+
+
+      reader.innerHTML = "";
+
+
+      html5QrCode =
+        new Html5Qrcode("reader");
+
+
+      const config = {
+
+        fps: 10,
+
+        qrbox: {
+          width: 250,
+          height: 250
+        }
+
+      };
+
+
+      html5QrCode.start(
+
+        { facingMode: "environment" },
+
+        config,
+
+
+        function(decodedText) {
+
+          scannerRunning = true;
+
+
+          document
+            .getElementById("registrationId")
+            .value = decodedText;
+
+
+          stopScanner();
+
+
+          checkRegistration();
+
+        },
+
+
+        function(errorMessage) {
+
+          /*
+           * QR not detected yet —
+           * keep scanning.
+           */
+
+        }
+
+      )
+
       .then(function() {
 
-        scannerRunning = false;
+        scannerRunning = true;
 
       })
-      .catch(function() {
+
+      .catch(function(error) {
 
         scannerRunning = false;
 
+
+        showResult(
+
+          "error",
+
+          "❌ Unable to access the camera.<br><br>" +
+
+          "Please allow camera access in your browser settings."
+
+        );
+
       });
-  }
-}
-    
+
+    }
+
+
+    function stopScanner() {
+
+      if (
+        html5QrCode &&
+        scannerRunning
+      ) {
+
+        html5QrCode.stop()
+
+          .then(function() {
+
+            scannerRunning = false;
+
+          })
+
+          .catch(function() {
+
+            scannerRunning = false;
+
+          });
+
+      }
+
+    }
+
   </script>
 
 </body>
