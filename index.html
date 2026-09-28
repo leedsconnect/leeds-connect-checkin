@@ -28,247 +28,352 @@
 
 
     body {
+
       margin: 0;
+
       padding: 20px;
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background: #f7f4fb;
+
       color: #222;
     }
 
 
     .container {
+
       max-width: 500px;
+
       margin: 0 auto;
+
       background: white;
-      border-radius: 18px;
+
+      border-radius: 20px;
+
       padding: 25px 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+
+      box-shadow:
+        0 4px 20px
+        rgba(0,0,0,0.12);
     }
 
 
+    /* =========================================
+       LOGO
+       ========================================= */
+
     .logo {
+
       text-align: center;
-      margin-bottom: 10px;
+
+      margin-bottom: 12px;
     }
 
 
     .logo img {
+
       width: 150px;
+
       height: 150px;
+
+      max-width: 100%;
+
       object-fit: contain;
+
       border-radius: 50%;
     }
 
 
+    /* =========================================
+       BRAND
+       ========================================= */
+
     .brand {
+
       text-align: center;
+
       margin-bottom: 20px;
     }
 
 
     .brand-title {
+
       font-size: 30px;
+
       font-weight: 800;
+
       margin-bottom: 5px;
     }
 
 
     .brand-tagline {
+
       font-size: 18px;
+
       font-weight: 700;
     }
 
 
+    /* =========================================
+       EVENT
+       ========================================= */
+
     .event-title {
+
       text-align: center;
+
       font-size: 23px;
+
       font-weight: 800;
+
       margin-top: 25px;
+
+      margin-bottom: 10px;
     }
 
 
     .event-info {
+
       text-align: center;
+
       line-height: 1.7;
+
       margin-bottom: 25px;
+
       color: #444;
     }
 
 
+    /* =========================================
+       SCANNER
+       ========================================= */
+
     .scanner-box {
-      border: 2px dashed #6b2aa8;
+
+      border:
+        2px dashed
+        #6b2aa8;
+
       border-radius: 15px;
+
       padding: 20px;
+
       text-align: center;
+
       margin-bottom: 20px;
     }
 
 
     .scanner-title {
+
       font-size: 20px;
+
       font-weight: 700;
+
       margin-bottom: 10px;
     }
 
 
     .scanner-note {
+
       font-size: 14px;
+
       color: #666;
+
       margin-bottom: 15px;
     }
 
 
     #reader {
+
       width: 100%;
+
       margin: auto;
     }
 
 
+    /* =========================================
+       BUTTONS
+       ========================================= */
+
+    button {
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 9px;
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    .check-button {
+
+      background: #6b2aa8;
+
+      color: white;
+    }
+
+
+    .check-button:disabled {
+
+      background: #aaa;
+
+      cursor: not-allowed;
+    }
+
+
+    /* =========================================
+       DIVIDER
+       ========================================= */
+
     .divider {
+
       display: flex;
+
       align-items: center;
+
       gap: 10px;
+
       margin: 25px 0;
+
       color: #777;
     }
 
 
     .divider::before,
     .divider::after {
+
       content: "";
+
       flex: 1;
+
       height: 1px;
+
       background: #ddd;
     }
 
 
+    /* =========================================
+       MANUAL ENTRY
+       ========================================= */
+
     .manual-title {
+
       font-size: 18px;
+
       font-weight: 700;
+
       margin-bottom: 10px;
     }
 
 
     input {
+
       width: 100%;
+
       padding: 14px;
-      border: 1px solid #ccc;
+
+      border:
+        1px solid #ccc;
+
       border-radius: 9px;
+
       font-size: 17px;
+
       margin-bottom: 12px;
     }
 
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 9px;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-
-
-    .check-button {
-      background: #6b2aa8;
-      color: white;
-    }
-
-
-    .check-button:disabled {
-      background: #aaa;
-      cursor: not-allowed;
-    }
-
-
-    .checkin-button {
-      background: #198754;
-      color: white;
-      font-size: 19px;
-      margin-top: 15px;
-    }
-
-
-    .secondary-button {
-      background: #666;
-      color: white;
-    }
-
+    /* =========================================
+       RESULT
+       ========================================= */
 
     .result {
+
       display: none;
+
       margin-top: 20px;
+
       padding: 18px;
+
       border-radius: 12px;
+
       text-align: center;
+
+      line-height: 1.6;
     }
 
 
     .success {
+
       background: #e8f7ed;
-      border: 1px solid #4caf50;
+
+      border:
+        1px solid #4caf50;
     }
 
 
     .error {
+
       background: #fdeaea;
-      border: 1px solid #d32f2f;
+
+      border:
+        1px solid #d32f2f;
     }
 
 
     .warning {
+
       background: #fff6df;
-      border: 1px solid #e0a800;
-    }
 
-
-    .info {
-      background: #eef4ff;
-      border: 1px solid #4b78c2;
+      border:
+        1px solid #e0a800;
     }
 
 
     .registration-card {
+
       text-align: left;
-      background: #fafafa;
-      border-radius: 12px;
-      padding: 15px;
-      margin-top: 15px;
-      border: 1px solid #ddd;
-    }
 
+      margin-top: 12px;
 
-    .registration-card div {
-      margin-bottom: 8px;
+      line-height: 1.7;
     }
 
 
     .registration-card strong {
-      display: inline-block;
-      min-width: 150px;
+
+      color: #333;
     }
 
 
+    /* =========================================
+       FOOTER
+       ========================================= */
+
     .footer {
+
       text-align: center;
+
       margin-top: 25px;
+
       font-size: 13px;
+
       color: #777;
     }
 
-
-    .hidden {
-      display: none !important;
-    }
-
-
-    .loading {
-      font-size: 15px;
-      color: #555;
-      margin-top: 10px;
-    }
 
   </style>
 
@@ -281,20 +386,23 @@
 <div class="container">
 
 
-  <!-- LOGO -->
+  <!-- ========================================
+       LOGO
+       ======================================== -->
 
   <div class="logo">
 
     <img
       src="Logo.jpeg"
       alt="Leeds Connect Logo"
-      onerror="this.style.display='none';"
     >
 
   </div>
 
 
-  <!-- BRAND -->
+  <!-- ========================================
+       BRAND
+       ======================================== -->
 
   <div class="brand">
 
@@ -309,10 +417,14 @@
   </div>
 
 
-  <!-- EVENT -->
+  <!-- ========================================
+       EVENT
+       ======================================== -->
 
   <div class="event-title">
+
     Leeds Connect Diwali 2026
+
   </div>
 
 
@@ -328,25 +440,33 @@
   </div>
 
 
-  <!-- SCANNER -->
+  <!-- ========================================
+       QR SCANNER
+       ======================================== -->
 
   <div class="scanner-box">
 
 
     <div class="scanner-title">
+
       📷 Scan Registration QR Code
+
     </div>
 
 
     <div class="scanner-note">
+
       Tap the button below and allow camera access.
+
     </div>
 
 
     <button
       type="button"
+      id="scanButton"
       class="check-button"
-      onclick="startScanner()">
+      onclick="startScanner()"
+    >
 
       📷 Open Camera & Scan QR
 
@@ -355,24 +475,32 @@
 
     <div
       id="reader"
-      style="margin-top:20px;">
-    </div>
+      style="margin-top:20px;"
+    ></div>
 
 
   </div>
 
 
-  <!-- DIVIDER -->
+  <!-- ========================================
+       DIVIDER
+       ======================================== -->
 
   <div class="divider">
+
     OR
+
   </div>
 
 
-  <!-- MANUAL REGISTRATION -->
+  <!-- ========================================
+       MANUAL REGISTRATION
+       ======================================== -->
 
   <div class="manual-title">
+
     Enter Registration ID
+
   </div>
 
 
@@ -385,16 +513,19 @@
 
 
   <button
+    id="checkButton"
     class="check-button"
-    id="validateButton"
-    onclick="checkRegistration()">
+    onclick="checkRegistration()"
+  >
 
     Check Registration
 
   </button>
 
 
-  <!-- RESULT -->
+  <!-- ========================================
+       RESULT
+       ======================================== -->
 
   <div
     id="result"
@@ -402,43 +533,14 @@
   </div>
 
 
-  <!-- REGISTRATION DETAILS -->
-
-  <div
-    id="registrationDetails"
-    class="registration-card hidden">
-  </div>
-
-
-  <!-- CHECK IN -->
-
-  <button
-    id="checkInButton"
-    class="checkin-button hidden"
-    onclick="performCheckIn()">
-
-    ✅ CHECK IN
-
-  </button>
-
-
-  <!-- RESET -->
-
-  <button
-    id="resetButton"
-    class="secondary-button hidden"
-    onclick="resetPage()">
-
-    Scan / Check Another Registration
-
-  </button>
-
-
-  <!-- FOOTER -->
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
 
   <div class="footer">
 
     Leeds Connect Diwali 2026<br>
+
     Volunteer Check-in
 
   </div>
@@ -450,801 +552,108 @@
 <script>
 
 
-/************************************************************
- * APPS SCRIPT WEB APP
- ************************************************************/
+/* =================================================
+   APPS SCRIPT WEB APP URL
+   ================================================= */
 
 const API_URL =
   "https://script.google.com/macros/s/AKfycbxrDMxUztt-6b79War4qdJR216FzyZN8PJ7s2NP_RG6nP1QsHAx9HSmoqK6wmZTdrJrow/exec";
 
 
-/************************************************************
- * GLOBAL VARIABLES
- ************************************************************/
+/* =================================================
+   QR SCANNER VARIABLES
+   ================================================= */
 
 let html5QrCode = null;
 
 let scannerRunning = false;
 
-let currentRegistration = null;
 
-let jsonpCounter = 0;
-
-
-/************************************************************
- * SHOW RESULT
- ************************************************************/
-
-function showResult(type, message) {
-
-  const result =
-    document.getElementById("result");
-
-  result.className =
-    "result " + type;
-
-  result.innerHTML =
-    message;
-
-  result.style.display =
-    "block";
-}
-
-
-/************************************************************
- * EXTRACT REGISTRATION ID
- *
- * This is important because your QR code may contain
- * something like:
- *
- * Leeds Connect | Registration ID=LCD26-00001
- *
- * rather than only:
- *
- * LCD26-00001
- ************************************************************/
+/* =================================================
+   CLEAN QR CONTENT
+   ================================================= */
 
 function extractRegistrationId(value) {
 
-  value =
-    String(value || "").trim();
-
-
   if (!value) {
+
     return "";
   }
 
 
+  value =
+    String(value).trim();
+
+
   /*
-   * Look for LCD26-xxxxx anywhere
-   * inside the QR text.
+   * If QR contains:
+   *
+   * Leeds Connect | Registration ID=LCD26-00001
+   *
+   * extract only:
+   *
+   * LCD26-00001
    */
+
 
   const match =
     value.match(
-      /LCD26-\d+/i
+      /Registration\s*ID\s*=\s*(LCD26-[A-Za-z0-9-]+)/i
     );
 
 
   if (match) {
 
-    return match[0]
-      .toUpperCase()
-      .trim();
-
+    return match[1].trim();
   }
 
 
   /*
-   * If it doesn't match the expected
-   * pattern, return the original value.
+   * If QR contains only LCD26-00001
    */
 
-  return value.trim();
+  const directMatch =
+    value.match(
+      /(LCD26-[A-Za-z0-9-]+)/i
+    );
 
+
+  if (directMatch) {
+
+    return directMatch[1].trim();
+  }
+
+
+  /*
+   * Otherwise return original text
+   */
+
+  return value;
 }
 
 
-/************************************************************
- * JSONP API CALL
- *
- * GitHub Pages cannot use google.script.run.
- *
- * JSONP allows the GitHub page to communicate
- * with the Apps Script Web App.
- ************************************************************/
-
-function callApi(api, parameters, successCallback) {
-
-  const callbackName =
-    "leedsConnectCallback_" +
-    Date.now() +
-    "_" +
-    (++jsonpCounter);
-
-
-  const query =
-    new URLSearchParams();
-
-
-  query.append(
-    "api",
-    api
-  );
-
-
-  query.append(
-    "callback",
-    callbackName
-  );
-
-
-  Object.keys(parameters || {})
-    .forEach(function(key) {
-
-      query.append(
-        key,
-        parameters[key]
-      );
-
-    });
-
-
-  const script =
-    document.createElement("script");
-
-
-  let completed = false;
-
-
-  /*
-   * Success callback
-   */
-
-  window[callbackName] =
-    function(data) {
-
-      completed = true;
-
-
-      cleanup();
-
-
-      successCallback(
-        data
-      );
-
-    };
-
-
-  /*
-   * Timeout protection
-   */
-
-  const timeout =
-    setTimeout(function() {
-
-      if (completed) {
-        return;
-      }
-
-
-      completed = true;
-
-
-      cleanup();
-
-
-      showResult(
-        "error",
-        "❌ Unable to connect to the registration system.<br><br>" +
-        "The registration server did not respond."
-      );
-
-    }, 15000);
-
-
-  /*
-   * Cleanup
-   */
-
-  function cleanup() {
-
-    clearTimeout(
-      timeout
-    );
-
-
-    if (script.parentNode) {
-
-      script.parentNode.removeChild(
-        script
-      );
-
-    }
-
-
-    try {
-
-      delete window[callbackName];
-
-    } catch (e) {
-
-      window[callbackName] =
-        undefined;
-
-    }
-
-  }
-
-
-  /*
-   * Script error
-   */
-
-  script.onerror =
-    function() {
-
-      if (completed) {
-        return;
-      }
-
-
-      completed = true;
-
-
-      cleanup();
-
-
-      showResult(
-        "error",
-        "❌ Unable to connect to the registration system.<br><br>" +
-        "Please check your internet connection and try again."
-      );
-
-    };
-
-
-  /*
-   * Build Apps Script URL
-   */
-
-  script.src =
-    API_URL +
-    "?" +
-    query.toString();
-
-
-  /*
-   * Add script to page.
-   */
-
-  document
-    .body
-    .appendChild(script);
-
-}
-
-
-/************************************************************
- * VALIDATE REGISTRATION
- ************************************************************/
-
-function checkRegistration() {
-
-
-  let id =
-    document
-      .getElementById("registrationId")
-      .value
-      .trim();
-
-
-  /*
-   * Extract clean registration ID.
-   */
-
-  id =
-    extractRegistrationId(id);
-
-
-  if (!id) {
-
-    showResult(
-      "error",
-      "Please enter or scan a Registration ID."
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * Put cleaned ID back into input.
-   */
-
-  document
-    .getElementById("registrationId")
-    .value =
-      id;
-
-
-  /*
-   * Hide old information.
-   */
-
-  document
-    .getElementById("registrationDetails")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("checkInButton")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("resetButton")
-    .classList
-    .add("hidden");
-
-
-  /*
-   * Disable validation button.
-   */
-
-  const button =
-    document
-      .getElementById("validateButton");
-
-
-  button.disabled = true;
-
-
-  showResult(
-    "warning",
-    "🔍 Checking registration..."
-  );
-
-
-  /*
-   * Call Apps Script API.
-   */
-
-  callApi(
-    "validate",
-    {
-      id: id
-    },
-
-    function(data) {
-
-      button.disabled = false;
-
-
-      handleValidationResponse(
-        data
-      );
-
-    }
-  );
-
-}
-
-
-/************************************************************
- * HANDLE VALIDATION RESPONSE
- ************************************************************/
-
-function handleValidationResponse(data) {
-
-
-  if (!data) {
-
-    showResult(
-      "error",
-      "❌ No response received from registration system."
-    );
-
-    return;
-
-  }
-
-
-  if (!data.success) {
-
-    showResult(
-      "error",
-      "❌ " +
-      escapeHtml(
-        data.message ||
-        "Registration could not be validated."
-      )
-    );
-
-    return;
-
-  }
-
-
-  if (!data.valid) {
-
-    showResult(
-      "error",
-      "❌ Invalid registration."
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * Registration found.
-   */
-
-  currentRegistration =
-    data.registration;
-
-
-  /*
-   * Already checked in.
-   */
-
-  if (data.alreadyCheckedIn) {
-
-    showRegistrationDetails(
-      data.registration
-    );
-
-
-    showResult(
-      "warning",
-      "⚠️ This registration has already been checked in."
-    );
-
-
-    /*
-     * Don't show CHECK IN button.
-     */
-
-    document
-      .getElementById("checkInButton")
-      .classList
-      .add("hidden");
-
-
-    document
-      .getElementById("resetButton")
-      .classList
-      .remove("hidden");
-
-
-    return;
-
-  }
-
-
-  /*
-   * Valid and not checked in.
-   */
-
-  showRegistrationDetails(
-    data.registration
-  );
-
-
-  showResult(
-    "success",
-    "✅ Registration found. Please verify the details below."
-  );
-
-
-  /*
-   * Show CHECK IN.
-   */
-
-  document
-    .getElementById("checkInButton")
-    .classList
-    .remove("hidden");
-
-
-  document
-    .getElementById("resetButton")
-    .classList
-    .remove("hidden");
-
-}
-
-
-/************************************************************
- * SHOW REGISTRATION DETAILS
- ************************************************************/
-
-function showRegistrationDetails(registration) {
-
-
-  const box =
-    document
-      .getElementById("registrationDetails");
-
-
-  box.innerHTML = `
-
-    <div>
-      <strong>Registration ID:</strong>
-      ${escapeHtml(registration.registrationId)}
-    </div>
-
-    <div>
-      <strong>Name:</strong>
-      ${escapeHtml(registration.name)}
-    </div>
-
-    <div>
-      <strong>Adults:</strong>
-      ${escapeHtml(registration.adults)}
-    </div>
-
-    <div>
-      <strong>Kids &gt; 5:</strong>
-      ${escapeHtml(registration.kidsOver5)}
-    </div>
-
-    <div>
-      <strong>Kids &lt; 5:</strong>
-      ${escapeHtml(registration.kidsUnder5)}
-    </div>
-
-    <div>
-      <strong>Veg Meals:</strong>
-      ${escapeHtml(registration.vegMeals)}
-    </div>
-
-    <div>
-      <strong>Non-Veg Meals:</strong>
-      ${escapeHtml(registration.nonVegMeals)}
-    </div>
-
-    <div>
-      <strong>Amount:</strong>
-      ${escapeHtml(registration.amount)}
-    </div>
-
-  `;
-
-
-  box.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-/************************************************************
- * CHECK IN
- ************************************************************/
-
-function performCheckIn() {
-
-
-  if (!currentRegistration) {
-
-    showResult(
-      "error",
-      "Please validate a registration first."
-    );
-
-    return;
-
-  }
-
-
-  const registrationId =
-    currentRegistration.registrationId;
-
-
-  const button =
-    document
-      .getElementById("checkInButton");
-
-
-  button.disabled = true;
-
-
-  showResult(
-    "warning",
-    "⏳ Checking in " +
-    escapeHtml(
-      currentRegistration.name
-    ) +
-    "..."
-  );
-
-
-  /*
-   * Call check-in API.
-   */
-
-  callApi(
-    "checkin",
-    {
-
-      id:
-        registrationId,
-
-      by:
-        "Volunteer",
-
-      notes:
-        "Checked in using QR Check-in"
-
-    },
-
-    function(data) {
-
-      button.disabled = false;
-
-
-      handleCheckInResponse(
-        data
-      );
-
-    }
-  );
-
-}
-
-
-/************************************************************
- * HANDLE CHECK-IN RESPONSE
- ************************************************************/
-
-function handleCheckInResponse(data) {
-
-
-  if (!data) {
-
-    showResult(
-      "error",
-      "❌ No response received from registration system."
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * Duplicate check-in.
-   */
-
-  if (
-    data.alreadyCheckedIn
-  ) {
-
-    showResult(
-      "warning",
-      "⚠️ ALREADY CHECKED IN"
-    );
-
-
-    document
-      .getElementById("checkInButton")
-      .classList
-      .add("hidden");
-
-
-    return;
-
-  }
-
-
-  /*
-   * Check-in failed.
-   */
-
-  if (!data.success) {
-
-    showResult(
-      "error",
-      "❌ " +
-      escapeHtml(
-        data.message ||
-        "Check-in failed."
-      )
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * SUCCESS
-   */
-
-  showResult(
-    "success",
-    `
-      <div style="font-size:24px;font-weight:800;">
-        ✅ CHECK-IN SUCCESSFUL
-      </div>
-
-      <br>
-
-      <strong>
-        ${escapeHtml(
-          data.registration.name
-        )}
-      </strong>
-
-      <br>
-
-      Registration ID:
-      ${escapeHtml(
-        data.registration.registrationId
-      )}
-
-      <br><br>
-
-      🎉 Welcome to Leeds Connect Diwali 2026!
-    `
-  );
-
-
-  /*
-   * Disable CHECK IN button.
-   */
-
-  document
-    .getElementById("checkInButton")
-    .classList
-    .add("hidden");
-
-
-  /*
-   * Keep reset button visible.
-   */
-
-  document
-    .getElementById("resetButton")
-    .classList
-    .remove("hidden");
-
-
-}
-
-
-/************************************************************
- * QR SCANNER
- ************************************************************/
+/* =================================================
+   START QR SCANNER
+   ================================================= */
 
 function startScanner() {
 
 
   if (scannerRunning) {
+
     return;
   }
 
 
   const reader =
-    document.getElementById(
-      "reader"
-    );
+    document.getElementById("reader");
 
 
   reader.innerHTML = "";
 
 
   html5QrCode =
-    new Html5Qrcode(
-      "reader"
-    );
+    new Html5Qrcode("reader");
 
 
   const config = {
@@ -1272,37 +681,24 @@ function startScanner() {
 
 
       /*
-       * Stop scanner immediately.
+       * QR detected
        */
+
+      const registrationId =
+        extractRegistrationId(decodedText);
+
+
+      document
+        .getElementById("registrationId")
+        .value =
+        registrationId;
+
 
       stopScanner();
 
 
       /*
-       * Extract Registration ID
-       * from QR contents.
-       */
-
-      const registrationId =
-        extractRegistrationId(
-          decodedText
-        );
-
-
-      /*
-       * Put ID into input.
-       */
-
-      document
-        .getElementById(
-          "registrationId"
-        )
-        .value =
-          registrationId;
-
-
-      /*
-       * Automatically validate.
+       * Automatically validate
        */
 
       checkRegistration();
@@ -1314,27 +710,38 @@ function startScanner() {
 
       /*
        * QR not detected yet.
-       *
-       * Keep scanning.
+       * Continue scanning.
        */
 
     }
 
   )
+
+
   .then(function() {
 
     scannerRunning = true;
 
+    document
+      .getElementById("scanButton")
+      .innerText =
+      "📷 Scanning...";
+
   })
+
+
   .catch(function(error) {
 
     scannerRunning = false;
 
-
     showResult(
+
       "error",
+
       "❌ Unable to access the camera.<br><br>" +
+
       "Please allow camera access in your browser settings."
+
     );
 
   });
@@ -1342,9 +749,9 @@ function startScanner() {
 }
 
 
-/************************************************************
- * STOP SCANNER
- ************************************************************/
+/* =================================================
+   STOP QR SCANNER
+   ================================================= */
 
 function stopScanner() {
 
@@ -1354,14 +761,22 @@ function stopScanner() {
     scannerRunning
   ) {
 
+
     html5QrCode
       .stop()
+
 
       .then(function() {
 
         scannerRunning = false;
 
+        document
+          .getElementById("scanButton")
+          .innerText =
+          "📷 Open Camera & Scan QR";
+
       })
+
 
       .catch(function() {
 
@@ -1374,108 +789,670 @@ function stopScanner() {
 }
 
 
-/************************************************************
- * RESET
- ************************************************************/
+/* =================================================
+   CHECK REGISTRATION
+   ================================================= */
 
-function resetPage() {
-
-
-  stopScanner();
+function checkRegistration() {
 
 
-  currentRegistration =
-    null;
+  let id =
+    document
+      .getElementById("registrationId")
+      .value
+      .trim();
+
+
+  /*
+   * Clean QR text in case somebody
+   * manually pasted the QR contents.
+   */
+
+  id =
+    extractRegistrationId(id);
 
 
   document
-    .getElementById(
-      "registrationId"
-    )
+    .getElementById("registrationId")
     .value =
-      "";
+    id;
+
+
+  if (!id) {
+
+    showResult(
+
+      "error",
+
+      "❌ Please enter a Registration ID."
+
+    );
+
+    return;
+  }
+
+
+  showResult(
+
+    "warning",
+
+    "⏳ Checking registration..."
+
+  );
 
 
   document
-    .getElementById(
-      "registrationDetails"
-    )
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById(
-      "checkInButton"
-    )
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById(
-      "resetButton"
-    )
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById(
-      "result"
-    )
-    .style
-    .display =
-      "none";
-
-
-  document
-    .getElementById(
-      "validateButton"
-    )
+    .getElementById("checkButton")
     .disabled =
-      false;
+    true;
+
+
+  /*
+   * JSONP callback name
+   */
+
+  const callbackName =
+    "registrationCallback_" +
+    Date.now();
+
+
+  /*
+   * Create global callback
+   */
+
+  window[callbackName] =
+    function(response) {
+
+
+      try {
+
+        handleValidationResponse(response);
+
+      }
+
+      finally {
+
+        /*
+         * Clean up callback
+         */
+
+        delete window[callbackName];
+
+      }
+
+    };
+
+
+  /*
+   * Build API URL
+   */
+
+  const url =
+    API_URL +
+    "?action=validate" +
+    "&registrationId=" +
+    encodeURIComponent(id) +
+    "&callback=" +
+    encodeURIComponent(callbackName);
+
+
+  /*
+   * Create script tag.
+   *
+   * This avoids the cross-origin
+   * fetch problem between GitHub
+   * Pages and Apps Script.
+   */
+
+  const script =
+    document.createElement("script");
+
+
+  script.src = url;
+
+
+  script.onerror =
+    function() {
+
+
+      delete window[callbackName];
+
+
+      document
+        .getElementById("checkButton")
+        .disabled =
+        false;
+
+
+      showResult(
+
+        "error",
+
+        "❌ Unable to connect to the registration system.<br><br>" +
+
+        "Please check your internet connection or try again."
+
+      );
+
+    };
+
+
+  document
+    .body
+    .appendChild(script);
+
+
+  /*
+   * Safety timeout
+   */
+
+  setTimeout(function() {
+
+
+    if (window[callbackName]) {
+
+
+      delete window[callbackName];
+
+
+      document
+        .getElementById("checkButton")
+        .disabled =
+        false;
+
+
+      showResult(
+
+        "error",
+
+        "❌ Registration system did not respond.<br><br>" +
+
+        "Please try again."
+
+      );
+
+    }
+
+  }, 15000);
 
 }
 
 
-/************************************************************
- * HTML ESCAPE
- ************************************************************/
+/* =================================================
+   VALIDATION RESPONSE
+   ================================================= */
 
-function escapeHtml(value) {
+function handleValidationResponse(response) {
 
-  return String(
-    value == null
-      ? ""
-      : value
-  )
 
-    .replace(
-      /&/g,
-      "&amp;"
-    )
+  document
+    .getElementById("checkButton")
+    .disabled =
+    false;
 
-    .replace(
-      /</g,
-      "&lt;"
-    )
 
-    .replace(
-      />/g,
-      "&gt;"
-    )
+  if (!response) {
 
-    .replace(
-      /"/g,
-      "&quot;"
-    )
+    showResult(
 
-    .replace(
-      /'/g,
-      "&#039;"
+      "error",
+
+      "❌ No response received."
+
     );
 
+    return;
+  }
+
+
+  /*
+   * Registration not found
+   */
+
+  if (!response.success) {
+
+    showResult(
+
+      "error",
+
+      "❌ " +
+      escapeHtml(
+        response.message ||
+        "Registration not found."
+      )
+
+    );
+
+    return;
+  }
+
+
+  const registration =
+    response.registration;
+
+
+  /*
+   * Already checked in
+   */
+
+  if (response.alreadyCheckedIn) {
+
+
+    showResult(
+
+      "warning",
+
+      "⚠️ <strong>ALREADY CHECKED IN</strong>" +
+
+      "<div class='registration-card'>" +
+
+      "<strong>Name:</strong> " +
+      escapeHtml(registration.name) +
+
+      "<br>" +
+
+      "<strong>Registration ID:</strong> " +
+      escapeHtml(registration.registrationId) +
+
+      "<br>" +
+
+      "<strong>Checked-in By:</strong> " +
+      escapeHtml(registration.checkedInBy || "") +
+
+      "<br>" +
+
+      "<strong>Check-in Time:</strong> " +
+      escapeHtml(registration.checkInTime || "") +
+
+      "</div>"
+
+    );
+
+    return;
+  }
+
+
+  /*
+   * Valid registration
+   */
+
+  showResult(
+
+    "success",
+
+    "✅ <strong>VALID REGISTRATION</strong>" +
+
+    "<div class='registration-card'>" +
+
+    "<strong>Name:</strong> " +
+    escapeHtml(registration.name) +
+
+    "<br>" +
+
+    "<strong>Registration ID:</strong> " +
+    escapeHtml(registration.registrationId) +
+
+    "<br>" +
+
+    "<strong>Adults:</strong> " +
+    escapeHtml(registration.adults) +
+
+    "<br>" +
+
+    "<strong>Kids over 5:</strong> " +
+    escapeHtml(registration.kidsOver5) +
+
+    "<br>" +
+
+    "<strong>Kids under 5:</strong> " +
+    escapeHtml(registration.kidsUnder5) +
+
+    "<br>" +
+
+    "<strong>Veg Meals:</strong> " +
+    escapeHtml(registration.vegMeals) +
+
+    "<br>" +
+
+    "<strong>Non-Veg Meals:</strong> " +
+    escapeHtml(registration.nonVegMeals) +
+
+    "</div>" +
+
+    "<br>" +
+
+    "<button " +
+
+      "class='check-button' " +
+
+      "onclick='performCheckIn()'>" +
+
+      "✅ CHECK IN" +
+
+    "</button>"
+
+  );
+
+}
+
+
+/* =================================================
+   ACTUAL CHECK-IN
+   ================================================= */
+
+function performCheckIn() {
+
+
+  let id =
+    document
+      .getElementById("registrationId")
+      .value
+      .trim();
+
+
+  id =
+    extractRegistrationId(id);
+
+
+  showResult(
+
+    "warning",
+
+    "⏳ Processing check-in..."
+
+  );
+
+
+  const callbackName =
+    "checkinCallback_" +
+    Date.now();
+
+
+  window[callbackName] =
+    function(response) {
+
+
+      try {
+
+        handleCheckInResponse(response);
+
+      }
+
+      finally {
+
+        delete window[callbackName];
+
+      }
+
+    };
+
+
+  const url =
+    API_URL +
+    "?action=checkin" +
+
+    "&registrationId=" +
+    encodeURIComponent(id) +
+
+    "&checkedInBy=" +
+    encodeURIComponent("Volunteer") +
+
+    "&notes=" +
+    encodeURIComponent("") +
+
+    "&callback=" +
+    encodeURIComponent(callbackName);
+
+
+  const script =
+    document.createElement("script");
+
+
+  script.src = url;
+
+
+  script.onerror =
+    function() {
+
+
+      delete window[callbackName];
+
+
+      showResult(
+
+        "error",
+
+        "❌ Unable to connect to the check-in system."
+
+      );
+
+    };
+
+
+  document
+    .body
+    .appendChild(script);
+
+
+  setTimeout(function() {
+
+
+    if (window[callbackName]) {
+
+
+      delete window[callbackName];
+
+
+      showResult(
+
+        "error",
+
+        "❌ Check-in system did not respond."
+
+      );
+
+    }
+
+  }, 15000);
+
+}
+
+
+/* =================================================
+   CHECK-IN RESPONSE
+   ================================================= */
+
+function handleCheckInResponse(response) {
+
+
+  if (!response) {
+
+    showResult(
+
+      "error",
+
+      "❌ No response received."
+
+    );
+
+    return;
+  }
+
+
+  if (!response.success) {
+
+
+    if (response.alreadyCheckedIn) {
+
+
+      showResult(
+
+        "warning",
+
+        "⚠️ <strong>ALREADY CHECKED IN</strong><br><br>" +
+
+        escapeHtml(
+          response.message
+        )
+
+      );
+
+    }
+
+    else {
+
+
+      showResult(
+
+        "error",
+
+        "❌ " +
+
+        escapeHtml(
+          response.message ||
+          "Check-in failed."
+        )
+
+      );
+
+    }
+
+
+    return;
+  }
+
+
+  const registration =
+    response.registration;
+
+
+  showResult(
+
+    "success",
+
+    "🎉 <strong>CHECK-IN SUCCESSFUL</strong>" +
+
+    "<div class='registration-card'>" +
+
+    "<strong>Name:</strong> " +
+
+    escapeHtml(
+      registration.name
+    ) +
+
+    "<br>" +
+
+    "<strong>Registration ID:</strong> " +
+
+    escapeHtml(
+      registration.registrationId
+    ) +
+
+    "<br>" +
+
+    "<strong>Adults:</strong> " +
+
+    escapeHtml(
+      registration.adults
+    ) +
+
+    "<br>" +
+
+    "<strong>Kids over 5:</strong> " +
+
+    escapeHtml(
+      registration.kidsOver5
+    ) +
+
+    "<br>" +
+
+    "<strong>Kids under 5:</strong> " +
+
+    escapeHtml(
+      registration.kidsUnder5
+    ) +
+
+    "<br>" +
+
+    "<strong>Veg Meals:</strong> " +
+
+    escapeHtml(
+      registration.vegMeals
+    ) +
+
+    "<br>" +
+
+    "<strong>Non-Veg Meals:</strong> " +
+
+    escapeHtml(
+      registration.nonVegMeals
+    ) +
+
+    "</div>"
+
+  );
+
+
+  /*
+   * Clear registration field
+   */
+
+  document
+    .getElementById("registrationId")
+    .value = "";
+
+}
+
+
+/* =================================================
+   RESULT DISPLAY
+   ================================================= */
+
+function showResult(type, message) {
+
+
+  const result =
+    document.getElementById("result");
+
+
+  result.className =
+    "result " + type;
+
+
+  result.innerHTML =
+    message;
+
+
+  result.style.display =
+    "block";
+
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+
+/* =================================================
+   HTML ESCAPE
+   ================================================= */
+
+function escapeHtml(text) {
+
+
+  return String(text || "")
+
+    .replace(/&/g, "&amp;")
+
+    .replace(/</g, "&lt;")
+
+    .replace(/>/g, "&gt;")
+
+    .replace(/"/g, "&quot;")
+
+    .replace(/'/g, "&#039;");
 }
 
 
